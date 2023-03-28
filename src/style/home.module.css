@@ -17,6 +17,23 @@
     display: none;
 }
 
+.home-dashboard{
+    padding-top: 50px;
+}
+
+.home-dashboard{
+    display: flex;
+    flex-direction: row;
+   
+}
+
+.pie-chart{
+    width: 50%;
+    margin: 10px;
+    background-color: aliceblue;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 @media (max-width: 750px){
 
     .home-desktop{
@@ -25,7 +42,6 @@
     .home-mobile{
         display: inline-block;
     }
-
     .home-mobile{
         display: flex;
         flex-direction: row;
@@ -33,5 +49,13 @@
         padding: 10px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
+
+        .home-dashboard {
+            display: flex;
+            flex-direction: column;
+        }
+        .pie-chart {
+            width: 100%;
+        }
 
 }

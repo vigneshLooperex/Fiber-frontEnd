@@ -100,6 +100,24 @@ export const nav = [
           },
         ]
 
+
+
+export const DashBoardLiquid = {
+  percent: 0.15,
+  outline: {
+      border: 10,
+      distance: 0,
+  },
+  wave: {
+      length: 128,
+  },
+  statistic: {
+      content: {
+          formatter: () => `Data Usage 0.15`,
+      },
+  },
+};
+
 export function getItem(
   label: React.ReactNode,
   key?: React.Key | null,
