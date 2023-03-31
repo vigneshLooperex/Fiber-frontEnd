@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Liquid, Area } from '@ant-design/plots';
-import { DashBoardLiquid } from '@/global/data';
+import { Liquid, Area, RingProgress } from '@ant-design/plots';
+import { DashBoardLiquid, DataLeft } from '@/global/data';
 
 const DashBoard = () => {
     const [data, setData] = useState([]);
@@ -28,15 +28,29 @@ const DashBoard = () => {
     };
 
     return (
-        <div className='home-dashboard'>
-            <div className='pie-chart'>
-                <Liquid {...DashBoardLiquid} />
+        <>
+            <div style={{ marginLeft: 10 }}>
+                <h2>Welcome Ganesh</h2>
             </div>
-            <div className='pie-chart'>
-                <Area {...config} />
+            <div className='home-dashboard'>
+                <div className='pie-chart'>
+                    <h3>Today Data Usage</h3>
+                    <Liquid {...DashBoardLiquid} />
+                </div>
+                <div className='pie-chart'>
+                    <h3>Current Month Data Usage</h3>
+                    <Area {...config} />
 
+                </div>
             </div>
-        </div>
+            <div className='data-left'>
+                <div className='pie-chart'>
+                    <h3>Current Month Data Usage</h3>
+                    <RingProgress {...DataLeft} />
+                </div>
+            </div>
+
+        </>
     )
 }
 

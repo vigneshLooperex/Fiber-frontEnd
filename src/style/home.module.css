@@ -17,6 +17,11 @@
     display: none;
 }
 
+.home-desktop{
+    background-color: var(--whiteFont);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .home-dashboard{
     padding-top: 50px;
 }
@@ -29,9 +34,120 @@
 
 .pie-chart{
     width: 50%;
-    margin: 10px;
-    background-color: aliceblue;
+    margin: 30px;
+    background-color: var(--rechargeBackground);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.pie-chart h3{
+    margin-left: 30px;
+}
+.data-left{
+    display: flex;
+    justify-content: center;
+}
+
+
+/* recharge */
+
+.recharge-screen{
+    margin: 50px;
+    background-color: var(--rechargeBackground);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.rechargeHead{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+    padding: 20px;
+}
+
+.Recharge-box{
+    display: flex;
+    flex-direction: row;
+}
+
+.Recharge-box .home-desktop{
+    display: none;
+}
+
+.plan-desc{
+    font-size: larger;
+    font-weight: 700;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.plan-desc p{
+    width: 500px;
+}
+
+.plan-desc button{
+    margin-top: 20px;
+}
+
+.plan-bill{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    font-size: medium;
+    font-weight: 500;
+    column-gap: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+/* Help pages */
+
+.help-issue{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-bottom: 30px;
+}
+
+.help-issue .help-box{
+    background-color: var(--buttonColor);
+    color: white;
+    flex: 1;
+    max-width: 18.22%;
+    height: auto;
+    padding: 30px;
+    object-fit: contain;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    border-radius: 8px;
+        /* box-sizing: border-box; */
+}
+
+.help-box i{
+    border-radius: 50%;
+    border: 1px solid var(--whiteFont);
+    padding: 10px 12px 10px 12px;
+}
+
+/* collect payment */
+
+.collect{
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 650px){
+
+    .Recharge-box{
+        display: flex;
+        flex-direction: column  ;
+    }
 }
 
 @media (max-width: 750px){
@@ -39,10 +155,9 @@
     .home-desktop{
         display: none;
     }
+    
     .home-mobile{
         display: inline-block;
-    }
-    .home-mobile{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -50,12 +165,40 @@
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
-        .home-dashboard {
-            display: flex;
-            flex-direction: column;
+    .home-dashboard {
+        display: flex;
+        flex-direction: column;
+    }
+    .pie-chart {
+        width: 85%;
+    }
+
+    .help-issue {
+        flex-direction: column;
+        /* text-align: center; */
+        align-items: center;
+        justify-content: center;
+        row-gap: 40px;
+    }
+    
+        .help-issue .help-box{
+            padding: 30px;
+            width: 90%;
+            /* object-fit: contain;  */
         }
-        .pie-chart {
-            width: 100%;
+
+}
+
+@media (max-width: 1250px){
+
+    .plan-desc{
+        display: flex;
+        flex-direction: column;
+        row-gap: 50px;
+    }
+
+        .plan-desc p {
+            width: fit-content;
         }
 
 }

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { SVGProps } from "react";
-const InLiked = (props: SVGProps<SVGSVGElement>) => (
+const InLinked = (props: SVGProps<SVGSVGElement>) => (
     <svg
         width={36}
         height={36}
@@ -15,4 +15,4 @@ const InLiked = (props: SVGProps<SVGSVGElement>) => (
         />
     </svg>
 );
-export default InLiked;
+export default InLinked;

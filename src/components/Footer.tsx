@@ -1,5 +1,5 @@
 import FaceBook from '@/assets/svg/FaceBook'
-import InLiked from '@/assets/svg/Inlinked'
+import InLinked from '@/assets/svg/InLinked'
 import Twitter from '@/assets/svg/Twitter'
 import { aboutus, offer } from '@/global/data'
 import React from 'react'
@@ -30,7 +30,7 @@ function Footer() {
                     <div className='social-icons'>
                         <FaceBook />
                         <Twitter />
-                        <InLiked />
+                        <InLinked />
                     </div>
                 </div>
             </div>
