@@ -46,15 +46,8 @@ const UserDesc = () => {
 const UserImage = () => {
     return (
         <Image
-            width={350}
+            // width={350}
             src={`https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png`}
-            placeholder={
-                <Image
-                    preview={false}
-                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                    width={200}
-                />
-            }
         />
     )
 }

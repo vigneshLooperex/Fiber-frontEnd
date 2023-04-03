@@ -75,7 +75,7 @@ const ListOrder = (list: userDetailsList) => {
                 </Button>
                 <Image
                     width={200}
-                    style={{ display: 'none' }}
+                    style={{ display: 'none', color: 'black' }}
                     src={list.value}
                     preview={{
                         visible,

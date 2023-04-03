@@ -85,7 +85,7 @@ function Info(props: Props) {
 
                     <List.Item>
                         <List.Item.Meta
-                            title={<ListOrder {...{ ...items }} />}
+                            description={<ListOrder {...{ ...items }} />}
                         />
                     </List.Item>
                 )
@@ -109,7 +109,7 @@ const ListOrder = (list: userDetailsList) => {
                 </Button>
                 <Image
                     width={200}
-                    style={{ display: 'none' }}
+                    style={{ display: 'none', color: 'black' }}
                     src={list.value}
                     preview={{
                         visible,
