@@ -9,6 +9,7 @@ import Bill from '@/pages/user/child/Bill'
 import Collect from '@/pages/user/child/Collect'
 import Usage from '@/pages/user/child/Usage'
 import Profile from '@/pages/user/child/Profile'
+import ChangePassword from '@/pages/user/child/ChangePassword'
 
 const auth: RouteObject[] = [
     {
@@ -52,6 +53,10 @@ const account:RouteObject[] = [
         {
             path: '/profile',
             Component: Profile,
+        },
+        {
+            path: '/change-password',
+            Component: ChangePassword,
         },
     ]
 }

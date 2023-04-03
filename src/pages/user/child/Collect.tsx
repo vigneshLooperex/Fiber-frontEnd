@@ -14,7 +14,6 @@ const Collect = (props: Props) => {
                     labelCol={{ span: 10 }}
                     wrapperCol={{ span: 16 }}
                     labelAlign="left"
-
                     initialValues={{ remember: true }}
                     onFinish={(val) => console.log(val)}
                     autoComplete="off">
@@ -23,14 +22,21 @@ const Collect = (props: Props) => {
                         name="name"
                         rules={[{ required: true, message: 'Please type Name!' }]}
                     >
-                        <Input />
+                        <Input placeholder='Name' />
                     </Form.Item>
                     <Form.Item
                         label="Phone"
                         name="phone"
                         rules={[{ required: true, message: 'Please enter number with 10 digit!' }]}
                     >
-                        <InputNumber type='number' style={{ width: 200 }} maxLength={10} />
+                        <InputNumber maxLength={10} style={{ width: "fit-content" }} placeholder='Phone number' />
+                    </Form.Item>
+                    <Form.Item
+                        label="Address"
+                        name="address"
+                        rules={[{ required: true, message: 'Please fill you address' }]}
+                    >
+                        <Input.TextArea placeholder='Address' />
                     </Form.Item>
                     <Form.Item
                         label="Preferred Date"

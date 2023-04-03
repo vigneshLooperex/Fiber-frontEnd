@@ -87,5 +87,50 @@ export const TableData: ColumnDataType[] = [
   
 ];
 
+// Data usage
+
+export interface DataUsageType {
+  key: string;
+  date: string;
+  download: string;
+  upload: string;
+  total: string;
+  url: string;
+}
+
+export const DataUsageList: DataUsageType[] = [
+  {
+    key: '1',
+    date: '10/01/2022',
+    download: "10.5 GB",
+    upload: '6.12 GB',
+    total: '15.8 GB',
+    url: '#'
+  },
+  {
+    key: '2',
+    date: '10/01/2022',
+    download: "11.5 GB",
+    upload: '8.58 GB',
+    total: '15.8 GB',
+    url: '#'
+  },
+  {
+    key: '3',
+    date: '10/01/2022',
+    download: "8.5 GB",
+    upload: '6.12 GB',
+    total: '15.8 GB',
+    url: '#'
+  },
+];
 
 
+// user
+
+export interface userDetailsList{
+  title: string,
+  value: string,
+  type: string,
+
+}

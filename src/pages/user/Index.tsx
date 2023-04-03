@@ -26,7 +26,7 @@ function Index() {
         <p></p>
       </div>
       <Outlet />
-      <Drawer title="Basic Drawer" footer={null} placement="left" onClose={() => setMenu(false)} open={menu}>
+      <Drawer title="Menu" footer={null} placement="left" onClose={() => setMenu(false)} open={menu}>
         {nav.map((item, i) => <Link key={i} onClick={() => setMenu(false)} to={item.href} className={pathname === item.href ? 'nav-links nav-active' : 'nav-links'} ><item.icon />{item.title}</Link>)}
       </Drawer>
     </div>

@@ -29,11 +29,11 @@
 .home-dashboard{
     display: flex;
     flex-direction: row;
-   
+   justify-content: center;
 }
 
 .pie-chart{
-    width: 50%;
+    width: 40%;
     margin: 30px;
     background-color: var(--rechargeBackground);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -140,7 +140,102 @@
 .collect{
     display: flex;
     justify-content: center;
+    padding: 20px;
 }
+
+/* Data usage */
+
+/* .Data-usage{
+    display: grid;
+    place-items: center;
+} */
+
+.dataUsageForm{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: end;
+    column-gap: 10px;
+}
+
+
+/* profile screen */
+
+.profile-Card{
+    background-color: var(--rechargeBackground);
+}
+
+.profile-screen{
+    display: grid;
+    place-items: center;
+    margin-top: 40px;
+}
+
+.user-decs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.userIcon{
+    font-size: 120%;
+}
+
+.user-decs-list{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.ant-card-meta{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.user-title-logout{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.info-list h4{
+    width: 150px;
+}
+
+/* change password */
+
+
+.change-password-screen {
+    display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+}
+.change-password{
+    width: fit-content;
+    margin-top: 50px;
+    padding: 30px 50px;
+        background-color: var(--rechargeBackground);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.change-password-screen .rechargeHead{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
 
 @media (max-width: 650px){
 
