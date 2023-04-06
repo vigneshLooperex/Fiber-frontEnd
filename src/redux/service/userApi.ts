@@ -1,18 +1,13 @@
 import { api } from "./api";
+const token =  localStorage.getItem('refreshToken')
 
-export const userConfigApi = api.injectEndpoints({
+export const userConfig = api.injectEndpoints({
     endpoints: (builder) => ({
-        login: builder.mutation({
-            query: (payload) => ({
-                url: '/login',
-                method: 'POST',
-                body: payload
-            })
+        getHelp: builder.query({
+            query: () => '/get-globals'
         }),
-        reNewToken: builder.query({
-            query: () => '/renew-token'
-        })
+       
     })
 })
 
-// expo
+export const {useGetHelpQuery} = userConfig

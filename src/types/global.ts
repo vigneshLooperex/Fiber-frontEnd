@@ -20,12 +20,14 @@ export interface LoginModalProps {
 
 export interface HelpModalState {
     open: boolean,
-    serviceType: string
+    serviceType: string,
+    list: []
 }
 
 export interface HelpModalProps {
     open: boolean,
     serviceType: string,
+    list: [],
     setModalHelp: Dispatch<SetStateAction<HelpModalState>>
 }
 

@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
 import './index.css'
-import { route } from '@/router/path'
 import { ConfigProvider } from 'antd'
-import { ConfigProviderProps } from 'antd/es/config-provider'
 import { Provider } from 'react-redux'
 import { store } from './redux/store'
+import App from './App'
 
 
 const custom = {
@@ -17,10 +16,8 @@ const custom = {
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ConfigProvider theme={custom}>
       <Provider store={store}>
-        <RouterProvider router={route} />
+        <App/>
       </Provider>
-    </ConfigProvider>
   </React.StrictMode>,
 )

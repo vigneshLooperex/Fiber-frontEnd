@@ -1,6 +1,8 @@
+import { setCredentials } from '@/redux/slice/authSlice';
 import { KeyOutlined, LogoutOutlined, MailOutlined, PhoneOutlined, PushpinOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Card, Image } from 'antd'
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 
 const { Meta } = Card;
 
@@ -53,10 +55,26 @@ const UserImage = () => {
 }
 
 const UserTitle = () => {
+    const dispatch = useDispatch();
+    const navigation = useNavigate()
+
+    function logOut() {
+        console.log('Log out');
+
+        navigation('/')
+        localStorage.removeItem("refreshToken");
+        dispatch(setCredentials({
+            token: '',
+            user: {},
+            isAuthenticate: false,
+            logIn: false
+        }))
+    }
+
     return (
         <div className='user-title-logout'>
             <h2>Rani</h2>
-            <LogoutOutlined style={{ fontSize: 20, cursor: 'pointer' }} />
+            <LogoutOutlined onClick={logOut} style={{ fontSize: 20, cursor: 'pointer' }} />
         </div>
     )
 }

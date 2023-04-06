@@ -306,6 +306,16 @@ header div:nth-child(1) {
     cursor: pointer;
 }
 
+/* authLoader */
+
+.AuthLoader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
 
 
 

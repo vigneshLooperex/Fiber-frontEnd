@@ -1,4 +1,3 @@
-import {createBrowserRouter, RouteObject} from 'react-router-dom'
 import AuthHome from '@/pages/auth/Index'
 import UserHome from '@/pages/user/Index'
 import ErrorPage from '@/pages/ErrorPage'
@@ -10,8 +9,9 @@ import Collect from '@/pages/user/child/Collect'
 import Usage from '@/pages/user/child/Usage'
 import Profile from '@/pages/user/child/Profile'
 import ChangePassword from '@/pages/user/child/ChangePassword'
+import { RouteObject } from 'react-router-dom'
 
-const auth: RouteObject[] = [
+export const auth: RouteObject[] = [
     {
         path: '/',
         Component: AuthHome,
@@ -20,7 +20,7 @@ const auth: RouteObject[] = [
     
 ]
 
-const account:RouteObject[] = [
+export const account:RouteObject[] = [
 {
     path: '/',
     Component: UserHome,
@@ -61,5 +61,3 @@ const account:RouteObject[] = [
     ]
 }
 ]
-
-export const route = createBrowserRouter(account)
