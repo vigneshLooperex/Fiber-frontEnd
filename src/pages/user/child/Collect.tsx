@@ -1,9 +1,42 @@
-import { Button, DatePicker, Form, Input, InputNumber, Radio, TimePicker } from 'antd'
+import { useCollectMutation } from '@/redux/service/userApi'
+import { Button, DatePicker, Form, Input, InputNumber, Radio, TimePicker, message } from 'antd'
 import React from 'react'
 
-type Props = {}
+const Collect = () => {
+    const [collect, {isLoading}] = useCollectMutation()
 
-const Collect = (props: Props) => {
+    async function onFinish(val: any) {
+        const payload = {
+            name: val.name,
+            mobileNo: val.mobileNo,
+            address: val.address,
+            preferredDate: val.preferredDate,
+            bringChangeFor: val.bringChangeFor,
+            fromTime: val.time[0].$d,
+            toTime: val.time[1].$d
+        }
+
+        // console.log(payload);
+        
+        await collect(payload).unwrap().then(res => {
+            // console.log(res)
+            if(res.success){
+                message.open({
+                    type: 'success',
+                    content: res.message,
+                    
+                })
+            }
+        }).catch(err => {
+            console.log(err)
+            message.open({
+                type: 'error',
+                content: "Something went wrong",
+            })
+                
+        })
+    }
+
     return (
         <div className='recharge-screen'>
             <div className="rechargeHead">
@@ -14,8 +47,8 @@ const Collect = (props: Props) => {
                     labelCol={{ span: 10 }}
                     wrapperCol={{ span: 16 }}
                     labelAlign="left"
-                    initialValues={{ remember: true }}
-                    onFinish={(val) => console.log(val)}
+                    initialValues={{ bringChangeFor: 0 }}
+                    onFinish={(val) => onFinish(val)}
                     autoComplete="off">
                     <Form.Item
                         label="Name"
@@ -26,10 +59,10 @@ const Collect = (props: Props) => {
                     </Form.Item>
                     <Form.Item
                         label="Phone"
-                        name="phone"
+                        name="mobileNo"
                         rules={[{ required: true, message: 'Please enter number with 10 digit!' }]}
                     >
-                        <InputNumber maxLength={10} style={{ width: "fit-content" }} placeholder='Phone number' />
+                        <InputNumber addonBefore='+91' maxLength={10} style={{ width: "fit-content" }} placeholder='Phone number' />
                     </Form.Item>
                     <Form.Item
                         label="Address"
@@ -40,7 +73,7 @@ const Collect = (props: Props) => {
                     </Form.Item>
                     <Form.Item
                         label="Preferred Date"
-                        name="date"
+                        name="preferredDate"
                         rules={[{ required: true, message: 'Please pick date!' }]}
                     >
                         <DatePicker format="DD/MM/YYYY" />
@@ -52,15 +85,15 @@ const Collect = (props: Props) => {
                     >
                         <TimePicker.RangePicker />
                     </Form.Item>
-                    <Form.Item name='changes' label="Changes">
-                        <Radio.Group defaultValue='I have sufficient change'>
-                            <Radio value="I have sufficient change">I have sufficient change</Radio>
-                            <Radio value="Bring change for 500">Bring change for 500</Radio>
-                            <Radio value="Bring change for 2000">Bring change for 2000</Radio>
+                    <Form.Item name='bringChangeFor' label="Changes">
+                        <Radio.Group>
+                            <Radio value={0}>I have sufficient change</Radio>
+                            <Radio value={500}>Bring change for 500</Radio>
+                            <Radio value={2000}>Bring change for 2000</Radio>
                         </Radio.Group>
                     </Form.Item>
                     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                        <Button type='primary' htmlType='submit'>Submit</Button>
+                        <Button loading={isLoading} type='primary' htmlType='submit'>Submit</Button>
                     </Form.Item>
                 </Form>
             </div>

@@ -5,6 +5,10 @@ import BigCircle from '@/assets/svg/BigCircle'
 import { Button } from 'antd'
 import Message from '@/assets/svg/Message'
 import Footer from '@/components/Footer'
+import { useGetPlansQuery } from '@/redux/service/userApi'
+import { LoginModalState } from '@/types/global'
+import { useState } from 'react'
+import Login from '@/modal/Login'
 
 interface Plans {
     amount: string,
@@ -12,6 +16,14 @@ interface Plans {
 }
 
 function Index() {
+    const {data} = useGetPlansQuery({})
+
+    const [loginModal, setLoginModal] = useState<LoginModalState>({
+        open: false
+    })
+
+    // console.log(data);
+    
     return (
         <>
             <Header />
@@ -31,22 +43,22 @@ function Index() {
                 </div>
                 <div className='plans' id='plans'>
                     <div className='listCenter'>
-                        {plans.map((_item, i) => {
+                        {data?.plans?.map((_item:any, i:number) => {
                             return (
                                 <div className='top-plans' key={i} id={i.toString()}>
                                     <p>Best selling </p>
-                                    <div className='rupess'>{_item.amount}</div>
+                                    <div className='rupess'>₹ {_item.amount}</div>
                                     <hr color='#525360' style={{ width: '180px' }} />
                                     <div className="data">
                                         <div className="pack">
-                                            Data<br /><span>Unlimited</span>
+                                            Data speed<br /><span>{_item.networkSpeed} MB</span>
                                         </div>
                                         <div className="pack">
-                                            Validity<br /><span>{_item.validity}</span>
+                                            Validity<br /><span>{_item.validity} Days</span>
                                         </div>
                                     </div>
                                     <div className="recharge-button">
-                                        <button>Recharge</button>
+                                        <button style={{cursor: 'pointer'}} onClick={() => setLoginModal(pre => ({...pre, open: true}))}>Recharge</button>
                                         <a href="#">All Plans</a>
                                     </div>
                                 </div>
@@ -72,6 +84,7 @@ function Index() {
                     </div>
                 </div>
                 <Footer />
+                <Login {...{ ...loginModal, setLoginModal }} />
             </div>
         </>
     )

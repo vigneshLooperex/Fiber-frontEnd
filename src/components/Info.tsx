@@ -2,77 +2,82 @@ import { userDetailsList } from '@/types/global';
 import { Button, Image, List } from 'antd'
 import React, { useState } from 'react'
 import moment from 'moment';
+import { useSelector } from 'react-redux';
 
 type Props = {}
 
 
-const myArray: userDetailsList[] = [
-    {
-        title: "Id",
-        value: "641c51684224984856dddb3a",
-        type: 'text'
-    },
-    {
-        title: 'userName',
-        value: "vijeeth",
-        type: 'text'
-    },
-    {
-        title: 'accountActivation',
-        value: '2023-03-23T13:17:16.770Z',
-        type: 'date'
-    },
-    {
-        title: "Create At",
-        value: "2023-03-23T13:17:28.824Z",
-        type: 'date'
-    },
-    {
-        title: 'lastLogin',
-        value: '2023-04-03T05:42:56.878Z',
-        type: 'date'
-    },
-    {
-        title: 'address',
-        value: 'looperex ,thillai nagar trichy',
-        type: 'text'
-    },
-    {
-        title: 'mobileNo',
-        value: '7708783714',
-        type: 'number'
-    },
-    {
-        title: 'name',
-        value: 'vijeeth',
-        type: 'text'
-    },
-    {
-        title: 'addressProof',
-        value: 'https://thenistorage.s3.ap-south-1.amazonaws.com/devDash/vijeeth/AddressProof.jpg',
-        type: 'image'
-    },
-    {
-        title: 'caf',
-        value: 'https://thenistorage.s3.ap-south-1.amazonaws.com/devDash/vijeeth/CAF.png',
-        type: 'image'
-    },
-    {
-        title: 'idProof',
-        value: 'https://thenistorage.s3.ap-south-1.amazonaws.com/devDash/vijeeth/IdProof.JPG',
-        type: 'image'
-    },
-    {
-        title: 'profile',
-        value: 'https://thenistorage.s3.ap-south-1.amazonaws.com/devDash/vijeeth/Profile.png',
-        type: 'image'
-    },
-];
 
 
-function Info(props: Props) {
-    const { } = props
+function Info() {
+    const user = useSelector((state: any) => state.auth.user)
 
+    // console.log(user);
+    
+
+    const [myArray] = useState<userDetailsList[]>([
+        {
+            title: "Id",
+            value: user._id,
+            type: 'text'
+        },
+        {
+            title: 'userName',
+            value: user.userName,
+            type: 'text'
+        },
+        {
+            title: 'accountActivation',
+            value: user.accountActivation,
+            type: 'date'
+        },
+        {
+            title: "Create At",
+            value: user.createdAt,
+            type: 'date'
+        },
+        {
+            title: 'lastLogin',
+            value: user.lastLogin,
+            type: 'date'
+        },
+        {
+            title: 'address',
+            value: user.address,
+            type: 'text'
+        },
+        {
+            title: 'mobileNo',
+            value: user.mobileNo,
+            type: 'number'
+        },
+        {
+            title: 'name',
+            value: user.name,
+            type: 'text'
+        },
+        {
+            title: 'addressProof',
+            value: user.addressProof,
+            type: 'image'
+        },
+        {
+            title: 'caf',
+            value: user.caf,
+            type: 'image'
+        },
+        {
+            title: 'idProof',
+            value: user.idProof,
+            type: 'image'
+        },
+        {
+            title: 'profile',
+            value: user.profile,
+            type: 'image'
+        },
+    ])
+    
     return (
         <List
             // size='large'

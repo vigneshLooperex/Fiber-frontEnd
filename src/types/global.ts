@@ -136,3 +136,23 @@ export interface userDetailsList{
   type: string,
 
 }
+
+
+//context
+
+export interface ToastContextType {
+  success: () => void;
+  error: () => void;
+  // info: () => void;
+  // warning: () => void;
+}
+export interface ToastProps {
+  type: string;
+  content: string;
+}
+
+export interface ToastValue {
+  success: (content: ToastProps) => void;
+  error: (content: ToastProps) => void;
+
+}

@@ -7,6 +7,7 @@ import { useReNewTokenQuery } from './redux/service/authApi'
 import {createBrowserRouter, RouteObject} from 'react-router-dom'
 import { account, auth } from './router/path'
 import AuthLoader from './components/AuthLoader'
+import 'react-toastify/dist/ReactToastify.css';
 
 const custom = {
   token: {
@@ -22,8 +23,7 @@ export default function App() {
     
   return (
     <ConfigProvider theme={custom}>
-        {isLoading ? <AuthLoader /> : <RouterProvider router={createBrowserRouter(login ? account : auth)} />}
-        
+      {isLoading ? <AuthLoader /> : <RouterProvider router={createBrowserRouter(login ? account : auth)} />}
     </ConfigProvider>
   )
 }

@@ -22,7 +22,7 @@ const authSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addMatcher(authConfig.endpoints.login.matchFulfilled, (state, action) => {
-            console.log('login', action);
+            // console.log('login', action);
 
             localStorage.setItem('refreshToken', action.payload.refreshToken)
             
@@ -45,7 +45,7 @@ const authSlice = createSlice({
             
             console.log('renew Token success', action)
 
-            state.user = action.payload,
+            state.user = action.payload.user,
             state.isAuthenticate = true,
             state.token = action.payload.accesssToken,
             state.logIn = true
