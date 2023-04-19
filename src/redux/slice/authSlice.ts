@@ -41,6 +41,7 @@ const authSlice = createSlice({
         })
 
         //renewToken
+
         .addMatcher(authConfig.endpoints.reNewToken.matchFulfilled, (state, action) => {
             
             console.log('renew Token success', action)
@@ -65,3 +66,5 @@ const authSlice = createSlice({
 export const {setCredentials} = authSlice.actions
 
 export default authSlice.reducer
+
+// how to see status code in redux toolkit

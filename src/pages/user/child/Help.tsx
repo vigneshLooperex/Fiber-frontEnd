@@ -3,7 +3,7 @@ import { helpMethod } from '@/global/data'
 import HelpMessage from '@/modal/HelpMessage'
 import { useGetHelpQuery } from '@/redux/service/userApi'
 import { HelpModalState } from '@/types/global'
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 import PaymentIcon from '@mui/icons-material/Payment';
 
@@ -14,13 +14,15 @@ const Help = () => {
     // console.log(data);
     
 
-    if(isLoading) return <AuthLoader />
+    // if(isLoading) return <AuthLoader />
 
     return (
         <div className='recharge-screen'>
             <div className="rechargeHead">
                 <h2>How can we help you ?</h2>
             </div>
+
+            <Suspense fallback={<AuthLoader />}>
             <div className='help-issue'>
                 {data?.globals.reportMainCategoryEnum.map((item:any, i:number) => {
                     return (
@@ -39,6 +41,7 @@ const Help = () => {
                     )
                 })}
             </div>
+            </Suspense>
             <HelpMessage {...{ ...modalHelp, setModalHelp }} />
         </div>
     )

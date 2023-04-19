@@ -34,60 +34,7 @@ export interface HelpModalProps {
 
 //Billing section
 
-interface tagObject {
-  title: string;
-  link: string;
-}
 
-export interface ColumnDataType {
-  key: string;
-  no: number;
-  date: string; 
-  amount: number;
-  status: string;
-  plan: string;
-  datails: tagObject[];
-}
-
-export const TableData: ColumnDataType[] = [
-    {
-    key: "1",
-    no: 32,
-    date: "13/06/2002",
-    amount: 800,
-    status: 'pending',
-    plan: 'Basic plan',
-    datails: [
-    //   { title: "Paid", link: "#" },
-      { title: "bill", link: "#" }
-    ],
-  },
-  {
-    key: "2",
-    no: 32,
-    date: "13/06/2002",
-    amount: 800,
-    status: 'paid',
-    plan: 'Premium plan',
-    datails: [
-      { title: "Paid", link: "#" },
-      { title: "bill", link: "#" }
-    ],
-  },
-  {
-    key: "3",
-    no: 42,
-    date: "13/06/2002",
-    amount: 800,
-    status: 'paid',
-    plan: 'Entertaiment plan',
-    datails: [
-      { title: "Paid", link: "#" },
-      { title: "bill", link: "#" }
-    ],
-  },
-  
-];
 
 // Data usage
 
