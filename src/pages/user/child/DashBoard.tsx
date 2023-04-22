@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Liquid, Area, RingProgress } from '@ant-design/plots';
 import { DashBoardLiquid, DataLeft } from '@/global/data';
+import { useSelector } from 'react-redux';
 
 const DashBoard = () => {
     const [data, setData] = useState([]);
+    const user = useSelector((state: any) => state.auth.user)
 
     useEffect(() => {
         asyncFetch();
@@ -30,7 +32,7 @@ const DashBoard = () => {
     return (
         <>
             <div style={{ marginLeft: 10 }}>
-                <h2>Welcome Ganesh</h2>
+                <h2 style={{textTransform: 'capitalize'}}>Welcome {user?.name}</h2>
             </div>
             <div className='home-dashboard'>
                 <div className='pie-chart'>

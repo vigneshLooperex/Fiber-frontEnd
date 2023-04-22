@@ -1,13 +1,50 @@
-import { Button, Form, Input } from 'antd'
-import React from 'react'
+import { useChangePasswordMutation } from '@/redux/service/authApi';
+import { Button, Form, Input, message } from 'antd'
+import { useNavigate } from 'react-router-dom';
 
 type Props = {}
 
 function ChangePassword({ }: Props) {
+    const [changePassword, { isLoading }] = useChangePasswordMutation()
+    const [messageApi] = message.useMessage()
+    const navigate = useNavigate()
 
-    const onFinish = (values: any) => {
-        console.log('Success:', values);
+    const validateoldPassword = ({ getFieldValue }: any) => ({
+      validator(_:any, value:any) {
+        if (!value || getFieldValue('newPassword') === value) {
+          return Promise.resolve();
+        }
+        return Promise.reject(new Error('The two passwords that you entered do not match!'));
+      },
+    });
+
+    const onFinish = async(values: any) => {
+        delete values.confirmPassword
+        // console.log('Success:', values);
+
+        try{
+            const res = await changePassword(values).unwrap()
+            if(res.success)  {
+                message.open({
+                    type: 'success',
+                    content: res.message,
+                })    
+                navigate('/profile')
+            } 
+            else message.open({
+                type: 'error',
+                content:'Something went wrong',
+            })
+
+        }catch(err:any) {
+            console.log('error', err)
+            message.open({
+                type: 'error',
+                content: err?.data.message || 'Something went wrong',
+            })
+        }
     };
+
 
     return (
         <div className='change-password-screen'>
@@ -19,37 +56,41 @@ function ChangePassword({ }: Props) {
 
                 <Form
                     name="basic"
-                    labelCol={{ span: 8 }}
+                    labelCol={{ span: 10 }}
                     wrapperCol={{ span: 16 }}
                     style={{ maxWidth: 600 }}
                     onFinish={onFinish}
                 >
                     <Form.Item
-                        label="Username"
-                        name="username"
-                        rules={[{ required: true, message: 'Please input your username!' }]}
-                    >
-                        <Input />
-                    </Form.Item>
-
-                    <Form.Item
                         label="Old Password "
                         name="oldPassword"
-                        rules={[{ required: true, message: 'Please input your password!' }]}
+                        rules={[{ required: true, message: 'Old Password Required!' }]}
                     >
-                        <Input.Password />
+                        <Input/>
                     </Form.Item>
 
                     <Form.Item
                         label="New Password "
                         name="newPassword"
-                        rules={[{ required: true, message: 'Please input your password!' }]}
+                        rules={[{ required: true, message: 'New Password Required!' }]}
                     >
-                        <Input.Password />
+                        <Input/>
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Confirm Password"
+                        name="confirmPassword"
+                        dependencies={['newPassword']}
+                        rules={[
+                        { required: true, message: 'Confirm Password Required!' },
+                        validateoldPassword,
+                        ]}
+                    >
+                        <Input />
                     </Form.Item>
 
                     <Form.Item wrapperCol={{ offset: 10, span: 16 }}>
-                        <Button type="primary" htmlType="submit">
+                        <Button type="primary" htmlType="submit" loading={isLoading}>
                             Submit
                         </Button>
                     </Form.Item>

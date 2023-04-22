@@ -7,7 +7,7 @@ import React, { Dispatch, SetStateAction } from 'react'
 
 function Login(props: LoginModalProps) {
     const { open, setLoginModal } = props
-    const [login] = useLoginMutation()
+    const [login, {isLoading}] = useLoginMutation()
 
     const onFinish = async (values: any) => {
         // console.log('Payload:', values);
@@ -46,7 +46,7 @@ function Login(props: LoginModalProps) {
 
 
                 <Form.Item wrapperCol={{ offset: 10, span: 8, xs: { offset: 9, span: 8 }, }} >
-                    <Button type="primary" htmlType="submit">
+                    <Button type="primary" htmlType="submit" loading={isLoading}>
                         Submit
                     </Button>
                 </Form.Item>

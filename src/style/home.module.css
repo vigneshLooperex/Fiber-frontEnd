@@ -21,6 +21,10 @@
     background-color: var(--whiteFont);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.home-desktop .ant-anchor{
+    display: flex;
+    justify-content: space-between;
+}
 
 .home-dashboard{
     padding-top: 50px;
@@ -30,6 +34,13 @@
     display: flex;
     flex-direction: row;
    justify-content: center;
+}
+
+.disktop-menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;    
 }
 
 .pie-chart{
@@ -122,7 +133,7 @@
     background-color: var(--circleColor);
     color: white;
     flex: 1;
-    max-width: 18.22%;
+    max-width: 10.22%;
     height: auto;
     padding: 30px;
     object-fit: contain;
@@ -281,7 +292,7 @@
     
     .help-issue .help-box{
         padding: 30px;
-        width: 90%;
+        max-width: 18.22%;
         /* object-fit: contain;  */
     }
 

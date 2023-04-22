@@ -1,7 +1,9 @@
+import AuthLoader from '@/components/AuthLoader';
 import { getItem, RechargePlans } from '@/global/data';
 import { useGetPlansQuery, useRechargeMutation } from '@/redux/service/userApi';
 import { Menu, MenuProps, Layout, Button, message } from 'antd'
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const { Content, Sider } = Layout;
 
@@ -13,6 +15,7 @@ const Recharge = () => {
 
     const {data} = useGetPlansQuery({})
     const [recharge, {isLoading}] = useRechargeMutation()
+
     
     // console.log(data)
 
@@ -25,10 +28,13 @@ const Recharge = () => {
 
         try{
             const res = await recharge(payload).unwrap()
-            if(res.success === true)  message.open({
-                type: 'success',
-                content: res.message,
-            })  
+            if(res.success === true)  {
+                message.open({
+                    type: 'success',
+                    content: res.message,
+                })    
+                window.location.replace(res.url)
+            } 
             else message.open({
                 type: 'error',
                 content:'Something went wrong',
@@ -61,7 +67,9 @@ const Recharge = () => {
                 </Sider>
                 <Layout className="site-layout">
                     <Content>
+                            <Suspense fallback={<AuthLoader />}>
                         <div className='plan-desc'>
+
                             {data?.plans.map((item:any, i:any) => {
                                 if (i === parseInt(menuKey)) {
                                     return (
@@ -90,6 +98,7 @@ const Recharge = () => {
                             })}
 
                         </div>
+                            </Suspense>
                     </Content>
                 </Layout>
             </div>

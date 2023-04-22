@@ -17,8 +17,15 @@ export const authConfig = api.injectEndpoints({
                 body: payload
             })
         }),
+        changePassword: builder.mutation({
+            query: (payload) => ({
+                url: '/user/change-password',
+                method: 'PATCH',
+                body: payload
+            })
+        }),
        
     })
 })
 
-export const {useLoginMutation, useReNewTokenQuery} = authConfig
+export const {useLoginMutation, useReNewTokenQuery, useChangePasswordMutation} = authConfig

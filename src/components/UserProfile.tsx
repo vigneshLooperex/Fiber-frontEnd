@@ -51,7 +51,7 @@ const UserDesc = () => {
 const UserImage = () => {
     return (
         <Image
-            // width={350}
+            // width={300}
             src={`https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png`}
         />
     )
@@ -76,10 +76,13 @@ const UserTitle = () => {
         }))
     }
 
+    // console.log(user);
+    
+
     return (
         <div className='user-title-logout'>
-            <h2>{user.userName}</h2>
-            <LogoutOutlined onClick={logOut} style={{ fontSize: 20, cursor: 'pointer' }} />
+            <h2>{user?.userName}</h2>
+            {/* <LogoutOutlined onClick={logOut} style={{ fontSize: 20, cursor: 'pointer' }} /> */}
         </div>
     )
 }
