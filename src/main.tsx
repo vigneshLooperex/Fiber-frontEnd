@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider } from 'react-router-dom'
-import './index.css'
-import { ConfigProvider } from 'antd'
 import { Provider } from 'react-redux'
 import { store } from './redux/store'
+import './index.css'
 import App from './App'
+import 'swiper/css';
+import 'swiper/css/bundle';
 
 
 const custom = {

@@ -9,6 +9,7 @@ import { useGetPlansQuery } from '@/redux/service/userApi'
 import { LoginModalState } from '@/types/global'
 import { useState } from 'react'
 import Login from '@/modal/Login'
+import InfoContact from '@/modal/InfoContact'
 
 interface Plans {
     amount: string,
@@ -43,7 +44,7 @@ function Index() {
                 </div>
                 <div className='plans' id='plans'>
                     <div className='listCenter'>
-                        {data?.plans?.map((_item:any, i:number) => {
+                        {data?.plans?.slice(0,3).map((_item:any, i:number) => {
                             return (
                                 <div className='top-plans' key={i} id={i.toString()}>
                                     <p>Best selling </p>
@@ -79,8 +80,8 @@ function Index() {
                         Need guidance?
                     </p>
                     <div className="guideButton">
-                        <button>Support<Message /></button>
-                        <button>Call us<Message /></button>
+                        <button onClick={InfoContact}>Support<Message /></button>
+                        <button  onClick={InfoContact}>Call us<Message /></button>
                     </div>
                 </div>
                 <Footer />

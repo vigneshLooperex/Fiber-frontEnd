@@ -2,18 +2,15 @@ import AuthLoader from '@/components/AuthLoader';
 import { getItem, RechargePlans } from '@/global/data';
 import { useGetPlansQuery, useRechargeMutation } from '@/redux/service/userApi';
 import { Menu, MenuProps, Layout, Button, message } from 'antd'
-import React, { Suspense, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import postpaid from '../../../assets/images/recharge.jpg'
+import PlanSwiper from '@/components/PlanSwiper';
 
 const { Content, Sider } = Layout;
 
 type MenuItem = Required<MenuProps>['items'][number];
 
 const Recharge = () => {
-    const [menuKey, setMenuKey] = useState("0")
-    const [messageApi] = message.useMessage()
-
-    const {data} = useGetPlansQuery({})
+    const {data, isLoading:planLoading} = useGetPlansQuery({})
     const [recharge, {isLoading}] = useRechargeMutation()
 
     
@@ -46,61 +43,29 @@ const Recharge = () => {
                 content: 'Something went wrong',
             })
         }
-        
-
     }
 
 
 
     return (
-        <div className='recharge-screen'>
-            <div className="rechargeHead">
-                <h2>Prepaid Recharge</h2>
-                <h4>Your current Plan end on 31/05/2023</h4>
+        
+        <div className="dashboard-recharge-plan-list">
+            <div style={{ marginLeft: 30 }}>
+                <h2>Recharge</h2>
             </div>
-            <div className='Recharge-box'>
-                <div className='.home-mobile'>
-                    <Menu theme="light" defaultSelectedKeys={['0']} style={{ textTransform: 'capitalize'}} onClick={(e) => setMenuKey(e.key)} selectable mode="inline" items={items} />
+            <div className='dashboard-main-banner'>
+                <div className="dashboard-banner">
+                    <img src={postpaid}/>
+                    <div className='banner-content'>
+                        <div>Now enjoy our best plan like never before</div>
+                    </div>
                 </div>
-                <Sider className='home-desktop'>
-                    <Menu theme="light" defaultSelectedKeys={['0']} style={{ textTransform: 'capitalize'}}  onClick={(e) => setMenuKey(e.key)} selectable mode="inline" items={items} />
-                </Sider>
-                <Layout className="site-layout">
-                    <Content>
-                            <Suspense fallback={<AuthLoader />}>
-                        <div className='plan-desc'>
-
-                            {data?.plans.map((item:any, i:any) => {
-                                if (i === parseInt(menuKey)) {
-                                    return (
-                                        <>
-                                            <p>
-                                                {item.notes} {item.validity} days for {item.name}
-                                            </p>
-                                            <div >
-                                                <div className='plan-bill'>
-                                                    <div>
-                                                        Validy:<br />
-                                                        Plan Amount:
-                                                    </div>
-                                                    <div>
-                                                        {item.validity} days<br />
-                                                        ₹ {item.amount}<br />
-
-                                                    </div>
-
-                                                </div>
-                                                <Button loading={isLoading} type='primary' onClick={() => handleRecharge(item._id)}>Recharge</Button>
-                                            </div>
-                                        </>
-                                    )
-                                }
-                            })}
-
-                        </div>
-                            </Suspense>
-                    </Content>
-                </Layout>
+            </div>
+            <div className="slider-view">
+                {planLoading ? 
+                <AuthLoader/> :
+                <PlanSwiper {...{data, handleRecharge, isLoading}}/>
+                }
             </div>
         </div>
     )
