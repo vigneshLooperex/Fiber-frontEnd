@@ -1,4 +1,4 @@
-.nav-links{
+.nav-links {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,25 +8,26 @@
 }
 
 
-.nav-active{
+.nav-active {
     background-color: var(--buttonColor);
     color: var(--whiteFont);
 }
 
-.home-mobile{
+.home-mobile {
     display: none;
 }
 
-.home-desktop{
+.home-desktop {
     background-color: var(--whiteFont);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.home-desktop .ant-anchor{
+
+.home-desktop .ant-anchor {
     display: flex;
     justify-content: space-between;
 }
 
-.home-dashboard{
+.home-dashboard {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -35,53 +36,57 @@
     flex-wrap: wrap;
 }
 
-.home-profile-card{
+.home-profile-card {
     display: grid;
     place-items: center;
     /* max-width: 30%; */
     height: max-content;
     text-align: center;
     color: var(--whiteFont);
-    
+
     /* background-color: var(--rechargeBackground); */
 }
-.disktop-menu{
+
+.disktop-menu {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;    
+    align-items: center;
 }
 
-.mini-card{
+.mini-card {
     width: auto;
     position: relative;
 }
 
-.mini-card img{
+.mini-card img {
     filter: drop-shadow(0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19))
 }
-.mini-card-content{
+
+.mini-card-content {
     position: absolute;
     top: 0%;
     left: 10%;
     color: white;
 }
 
-.pie-chart{
+.pie-chart {
     width: 45%;
     margin-bottom: 30px;
     border-radius: 26px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.pie-chart h3{
+
+.pie-chart h3 {
     margin-left: 30px;
 }
-.data-left{
+
+.data-left {
     display: flex;
     justify-content: center;
 }
 
-.dashboard-bill{
+.dashboard-bill {
     display: flex;
     flex-direction: column;
     height: fit-content;
@@ -90,32 +95,32 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.dashboard-bill-header{
+.dashboard-bill-header {
     display: flex;
     flex-direction: row;
     align-items: center;
     column-gap: 20px;
 }
 
-.dashboard-main-banner{
+.dashboard-main-banner {
     display: grid;
     place-items: center;
     text-align: center;
 }
 
-.mySwiper{
+.mySwiper {
     align-self: normal;
-    
+
 }
 
-.banner-content{
+.banner-content {
     font-size: 48px;
     color: var(--whiteFont);
     font-weight: bold;
     padding: 10px;
 }
 
-.dashboard-banner{
+.dashboard-banner {
     overflow: hidden;
     display: flex;
     width: 80%;
@@ -124,18 +129,18 @@
     border-radius: 20px;
 }
 
-.dashboard-banner img{
+.dashboard-banner img {
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
 }
 
-.banner-content{
+.banner-content {
     background-color: var(--buttonColor);
     text-align: center;
     word-wrap: break-word;
 }
 
-.banner-content div{
+.banner-content div {
     display: grid;
     align-items: center;
     height: 100%;
@@ -145,13 +150,13 @@
 
 /* recharge */
 
-.recharge-screen{
+.recharge-screen {
     margin: 50px;
     background-color: var(--rechargeBackground);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.rechargeHead{
+.rechargeHead {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -160,25 +165,25 @@
     padding: 20px;
 }
 
-.Recharge-box{
+.Recharge-box {
     display: flex;
     flex-direction: row;
 }
 
-.dashboard-recharge-plan-list{
+.dashboard-recharge-plan-list {
     /* background-color: red; */
 }
 
-.slider-view{
+.slider-view {
     margin-top: 50px;
     /* background-color: red; */
 }
 
-.Recharge-box .home-desktop{
+.Recharge-box .home-desktop {
     display: none;
 }
 
-.plan-desc{
+.plan-desc {
     font-size: larger;
     font-weight: 700;
     display: flex;
@@ -189,15 +194,15 @@
     padding: 40px;
 }
 
-.plan-desc p{
+.plan-desc p {
     width: 500px;
 }
 
-.plan-desc button{
+.plan-desc button {
     margin-top: 20px;
 }
 
-.plan-bill{
+.plan-bill {
     /* background-color: red; */
     display: flex;
     flex-direction: row;
@@ -211,14 +216,14 @@
 
 /* Help pages */
 
-.help-issue{
+.help-issue {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     padding-bottom: 30px;
 }
 
-.help-issue .help-box{
+.help-issue .help-box {
     background-color: var(--circleColor);
     color: white;
     flex: 1;
@@ -230,10 +235,10 @@
     place-items: center;
     cursor: pointer;
     border-radius: 8px;
-        /* box-sizing: border-box; */
+    /* box-sizing: border-box; */
 }
 
-.help-box i{
+.help-box i {
     border-radius: 50%;
     border: 1px solid var(--whiteFont);
     padding: 10px 12px 10px 12px;
@@ -241,7 +246,7 @@
 
 /* collect payment */
 
-.collect{
+.collect {
     display: flex;
     justify-content: center;
     padding: 20px;
@@ -254,7 +259,7 @@
     place-items: center;
 } */
 
-.dataUsageForm{
+.dataUsageForm {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -266,52 +271,52 @@
 
 /* profile screen */
 
-.profile-Card{
+.profile-Card {
     background-color: var(--rechargeBackground);
 }
 
-.profile-screen{
+.profile-screen {
     display: grid;
     place-items: center;
     margin-top: 40px;
 }
 
-.user-decs{
+.user-decs {
     display: flex;
     flex-direction: row;
     align-items: center;
     column-gap: 20px;
 }
 
-.userIcon{
+.userIcon {
     font-size: 120%;
 }
 
-.user-decs-list{
+.user-decs-list {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
     flex-wrap: wrap;
 }
 
-.user-title-logout{
+.user-title-logout {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.info-list{
+.info-list {
     display: flex;
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.info-list h4{
+.info-list h4 {
     width: 150px;
 }
 
-.ant-image{
+.ant-image {
     width: 350px;
 }
 
@@ -320,44 +325,46 @@
 
 .change-password-screen {
     display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
-.change-password{
+
+.change-password {
     width: fit-content;
     margin-top: 50px;
     padding: 30px 50px;
-        background-color: var(--rechargeBackground);
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: var(--rechargeBackground);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.change-password-screen .rechargeHead{
-   display: flex;
-   align-items: center;
-   justify-content: center;
+.change-password-screen .rechargeHead {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
-@media (max-width: 650px){
+@media (max-width: 650px) {
 
-    .Recharge-box{
+    .Recharge-box {
         display: flex;
-        flex-direction: column  ;
+        flex-direction: column;
     }
-    .pie-chart{
+
+    .pie-chart {
         width: 80%;
     }
 }
 
-@media (max-width: 750px){
+@media (max-width: 750px) {
 
-    .home-desktop{
+    .home-desktop {
         display: none;
     }
-    
-    .home-mobile{
+
+    .home-mobile {
         display: inline-block;
         display: flex;
         flex-direction: row;
@@ -380,31 +387,33 @@
         justify-content: center;
         row-gap: 40px;
     }
-    
-    .help-issue .help-box{
+
+    .help-issue .help-box {
         padding: 30px;
         max-width: 18.22%;
         /* object-fit: contain;  */
     }
 
-    .ant-card-meta{
+    .ant-card-meta {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+
     .ant-image {
         width: 80%;
     }
-    .ant-card-meta-avatar{
+
+    .ant-card-meta-avatar {
         align-items: center;
         text-align: center;
     }
 
 }
 
-@media (max-width: 1250px){
+@media (max-width: 1250px) {
 
-    .plan-desc{
+    .plan-desc {
         display: flex;
         flex-direction: column;
         row-gap: 50px;
@@ -413,10 +422,12 @@
     .plan-desc p {
         width: fit-content;
     }
-    .dashboard-banner{
+
+    .dashboard-banner {
         flex-wrap: wrap;
     }
-    .dashboard-banner img{
+
+    .dashboard-banner img {
         width: 100%;
         object-fit: fill;
         border-top-right-radius: 0%;

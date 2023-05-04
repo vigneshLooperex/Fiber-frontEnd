@@ -103,3 +103,59 @@ export interface ToastValue {
   error: (content: ToastProps) => void;
 
 }
+
+
+export interface planData{
+  _id: string,
+  name: string,
+  amount: number,
+  validity: number,
+  networkSpeed: number,
+  data: string | number,
+  notes?: string,
+  active: boolean,
+  createdAt: Date,
+  updatedAt: Date,
+}
+
+export interface currentPlanData{
+  validity: {
+      from: Date,
+      to:Date
+  },
+  id: string
+}
+
+export interface nextPlanData extends currentPlanData{
+_id:string
+}
+export interface userData{
+currentPlan?: currentPlanData,
+_id: string,
+name?: string,
+userName: string,
+email?: string,
+mobileNo?: number,
+address?: string,
+accountActivation: Date,
+referralCode: string,
+nextPlan?: nextPlanData[],
+createdAt: Date,
+updatedAt:Date,
+lastLogin: Date,
+addressProof?: string,
+caf?: string,
+idProof?: string,
+profile?: string,
+}
+
+export interface paymentData {
+  _id:string,
+  paymentMode: string,
+  amount: number,
+  bill_id: string,
+  plan_id: planData,
+  user_id:userData,
+  createdAt: Date,
+  updatedAt: Date,
+}

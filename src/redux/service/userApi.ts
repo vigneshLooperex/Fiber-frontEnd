@@ -33,8 +33,11 @@ export const userConfig = api.injectEndpoints({
         getBill: builder.query({
             query:  (page=1) => `/user/bills?sortby=status:-1,createdAt:-1&populate=payment_id plan_id,name&page=${page}`
         }),
+        getPaymets: builder.query({
+            query:  (page=1) => `/user/payments?sortby=createdAt:-1&populate=bill_id plan_id&page=${page}`
+        }),
        
     })
 })
 
-export const {useGetHelpQuery, useSendReportMutation, useCollectMutation, useGetPlansQuery, useRechargeMutation, useGetBillQuery} = userConfig
+export const {useGetHelpQuery, useSendReportMutation, useCollectMutation, useGetPlansQuery, useRechargeMutation, useGetBillQuery,useGetPaymetsQuery} = userConfig

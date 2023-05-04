@@ -1,90 +1,106 @@
-import { setCredentials } from '@/redux/slice/authSlice';
-import { KeyOutlined, LogoutOutlined, MailOutlined, PhoneOutlined, PushpinOutlined, UserOutlined } from '@ant-design/icons';
-import { Avatar, Card, Image } from 'antd'
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { setCredentials } from "@/redux/slice/authSlice";
+import {
+  KeyOutlined,
+  LogoutOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  PushpinOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import { Avatar, Card, Image } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 const { Meta } = Card;
 
-
 const UserProfile = () => {
-
-    return (
-        <Meta
-            avatar={<UserImage />}
-            title={<UserTitle />}
-            description={<UserDesc />}
-        />
-    )
-}
+  return (
+    <Meta
+      avatar={<UserImage />}
+      title={<UserTitle />}
+      description={<UserDesc />}
+    />
+  );
+};
 
 const UserDesc = () => {
-    const user = useSelector((state: any) => state.auth.user)
+  const user = useSelector((state: any) => state.auth.user);
 
-    const { userName, mobileNo, address } = user
+  const { userName, mobileNo, address, profile } = user;
 
-    const datas = [
-        {Icon: UserOutlined, title: userName, tags: 'p', },
-        {Icon: KeyOutlined, title: 'Change Password',tags: 'Link', },
-        {Icon: PhoneOutlined, title: mobileNo, tags: 'p', },
-        // {Icon: MailOutlined, title: 'venkatachalam26992@gmail.com' , tags: 'p', },
-        {Icon: PushpinOutlined, title: address,tags: 'p', },
+  const datas = [
+    { Icon: UserOutlined, title: userName, tags: "p" },
+    { Icon: KeyOutlined, title: "Change Password", tags: "Link" },
+    { Icon: PhoneOutlined, title: mobileNo, tags: "p" },
+    // {Icon: MailOutlined, title: 'venkatachalam26992@gmail.com' , tags: 'p', },
+    { Icon: PushpinOutlined, title: address, tags: "p" },
+  ];
 
-    ]
-    
-    return (
-        <div className='user-decs-list'>
-            {datas.map((data, index) => {
-                const { Icon, title, tags } = data
-                return (
-                    <div className='user-decs' key={index}>
-                        <Icon className='userIcon' />
-                        {tags === 'p' ? <p>{title}</p> : <Link to='/change-password'>{title}</Link>}
-                    </div>
-                )
-            })
-            }
-        </div>
-    )
-}
+  return (
+    <div className="user-decs-list">
+      {datas.map((data, index) => {
+        const { Icon, title, tags } = data;
+        return (
+          <div className="user-decs" key={index}>
+            <Icon className="userIcon" />
+            {tags === "p" ? (
+              <p>{title}</p>
+            ) : (
+              <Link to="/change-password">{title}</Link>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 const UserImage = () => {
-    return (
-        <Image
-            // width={300}
-            src={`https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png`}
-        />
-    )
-}
+  const user = useSelector((state: any) => state.auth.user);
+
+  const { profile } = user;
+  // console.log("profile", profile, user);
+  return (
+    <Image
+      //   width={300}
+      //   height={300}
+      src={
+        profile ||
+        `https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png`
+      }
+    />
+  );
+};
 
 const UserTitle = () => {
-    const dispatch = useDispatch();
-    const navigation = useNavigate()
+  const dispatch = useDispatch();
+  const navigation = useNavigate();
 
-    const user = useSelector((state: any) => state.auth.user)
+  const user = useSelector((state: any) => state.auth.user);
 
-    function logOut() {
-        console.log('Log out');
+  function logOut() {
+    console.log("Log out");
 
-        navigation('/')
-        localStorage.removeItem("refreshToken");
-        dispatch(setCredentials({
-            token: '',
-            user: {},
-            isAuthenticate: false,
-            logIn: false
-        }))
-    }
+    navigation("/");
+    localStorage.removeItem("refreshToken");
+    dispatch(
+      setCredentials({
+        token: "",
+        user: {},
+        isAuthenticate: false,
+        logIn: false,
+      })
+    );
+  }
 
-    // console.log(user);
-    
+  // console.log(user);
 
-    return (
-        <div className='user-title-logout'>
-            <h2>{user?.userName}</h2>
-            {/* <LogoutOutlined onClick={logOut} style={{ fontSize: 20, cursor: 'pointer' }} /> */}
-        </div>
-    )
-}
+  return (
+    <div className="user-title-logout">
+      <h2>{user?.userName}</h2>
+      {/* <LogoutOutlined onClick={logOut} style={{ fontSize: 20, cursor: 'pointer' }} /> */}
+    </div>
+  );
+};
 
-export default UserProfile
+export default UserProfile;
