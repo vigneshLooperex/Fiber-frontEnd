@@ -29,6 +29,7 @@ const TableCol: ColumnsType<ColumnDataType> = [
     title: "Date",
     dataIndex: "date",
     key: "date",
+    render: (date) => new Date(date).toLocaleDateString('en-AU')
   },
 
   {
@@ -62,7 +63,7 @@ const TableCol: ColumnsType<ColumnDataType> = [
           let color = "geekblue";
 
           return (
-            tag.id !== "0" && (
+            // tag.id !== "0" && (
               <Tag
                 color={color}
                 key={i}
@@ -74,7 +75,7 @@ const TableCol: ColumnsType<ColumnDataType> = [
               >
                 {tag.title.toUpperCase()}
               </Tag>
-            )
+            // )
           );
         })}
       </>
@@ -102,6 +103,9 @@ const Bill = () => {
   const [billData, setBillData] = useState<ColumnDataType[]>([]);
   const { data } = useGetBillQuery(page);
 
+  console.log(data);
+  
+
   React.useEffect(() => {
     setBillData([]);
     data?.bills.map((item: any, i: any) => {
@@ -111,7 +115,7 @@ const Bill = () => {
       const datails = [
         // { title: "payment", id: payment_id?._id ? payment_id?._id : "0" },
         // { title: "bill", id: _id },
-        { title: "get pdf", id: payment_id?._id ? payment_id?._id : "0" },
+        { title: "pdf", id: payment_id?._id ? payment_id?._id : "0" },
       ];
       setBillData((prev) => [
         ...prev,
@@ -121,7 +125,7 @@ const Bill = () => {
           date: createdAt,
           amount,
           status,
-          plan: plan_id?.name,
+          plan: plan_id?.name || 'No Plan',
           datails,
         },
       ]);
