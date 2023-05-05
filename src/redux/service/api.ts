@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { RootState } from "../store";
 
-export const baseUrl= "http://192.168.29.20:8000"
+// export const baseUrl= "http://192.168.29.20:8000"
+export const baseUrl = "https://fiberbackend.onrender.com"
 const baseQuery = fetchBaseQuery({
-    // baseUrl: "https://fiberbackend.onrender.com",
     baseUrl,
     prepareHeaders: (headers, api) => {
 

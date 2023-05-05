@@ -1,9 +1,23 @@
 import { useCollectMutation } from '@/redux/service/userApi'
+import { RootState } from '@/redux/store'
 import { Button, DatePicker, Form, Input, InputNumber, Radio, TimePicker, message } from 'antd'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 const Collect = () => {
     const [collect, {isLoading}] = useCollectMutation()
+    const user = useSelector((state:RootState) => state.auth.user)
+    const [form] = Form.useForm()
+    
+
+    console.log(user)
+
+    useEffect(() => {
+        if(user){
+            const {name, mobileNo, address}:any = user
+            form.setFieldsValue({name, mobileNo, address})
+        }
+    }, [])
 
     async function onFinish(val: any) {
         const payload = {
@@ -47,6 +61,7 @@ const Collect = () => {
                     labelCol={{ span: 10 }}
                     wrapperCol={{ span: 16 }}
                     labelAlign="left"
+                    form={form}
                     initialValues={{ bringChangeFor: 0 }}
                     onFinish={(val) => onFinish(val)}
                     autoComplete="off">
@@ -83,7 +98,7 @@ const Collect = () => {
                         name="time"
                         rules={[{ required: true, message: 'Please pick time!' }]}
                     >
-                        <TimePicker.RangePicker />
+                        <TimePicker.RangePicker  />
                     </Form.Item>
                     <Form.Item name='bringChangeFor' label="Changes">
                         <Radio.Group>
