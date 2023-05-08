@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { authConfig } from "../service/authApi";
+import { message } from "antd";
 
 const initialState = {
     token: '',
@@ -25,6 +26,7 @@ const authSlice = createSlice({
             // console.log('login', action);
 
             localStorage.setItem('refreshToken', action.payload.refreshToken)
+            message.success('Login Successfull')
             
             state.user = action.payload.user,
             state.isAuthenticate = true,
@@ -33,6 +35,7 @@ const authSlice = createSlice({
         })
         .addMatcher(authConfig.endpoints.login.matchRejected, (state, action) => {
             console.log("Login reject",action);
+            message.error('Login Failed')
             
             state.user = {},
             state.isAuthenticate = false,
@@ -52,7 +55,10 @@ const authSlice = createSlice({
             state.logIn = true
         })
         .addMatcher(authConfig.endpoints.reNewToken.matchRejected, (state, action) => {
+
+            localStorage.removeItem('refreshToken')
             console.log("renew Token failed",action);
+            // message.error('Login Failed')
 
             state.user = {},
             state.isAuthenticate = false,

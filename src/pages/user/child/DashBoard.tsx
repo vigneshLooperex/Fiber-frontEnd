@@ -33,7 +33,7 @@ const DashBoard = () => {
   const [data, setData] = useState([]);
   const user = useSelector((state: any) => state.auth.user);
 
-  console.log("user", user);
+  // console.log("user", user);
 
   React.useEffect(() => {
     billList?.bills.map((item: any, i: any) => {
@@ -87,13 +87,13 @@ const DashBoard = () => {
     const today = new Date();
     const lastDate = new Date(date);
 
-    console.log("today", typeof today);
-    console.log("lastDate", typeof lastDate);
+    // console.log("today", typeof today);
+    // console.log("lastDate", typeof lastDate);
 
     const diffTime = Math.floor(
       (lastDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
     );
-    console.log("diffTime", diffTime);
+    // console.log("diffTime", diffTime);
 
     return diffTime + " days";
   };

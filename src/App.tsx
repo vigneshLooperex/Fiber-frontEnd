@@ -20,6 +20,8 @@ export default function App() {
     const {isLoading} = useReNewTokenQuery({})
 
     const login = useSelector((state:RootState) => state.auth.logIn)
+
+    console.log(login)
     
   return (
     <ConfigProvider theme={custom}>

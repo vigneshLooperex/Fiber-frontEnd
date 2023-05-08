@@ -10,12 +10,12 @@ const Collect = () => {
     const [form] = Form.useForm()
     
 
-    console.log(user)
+    // console.log(user)
 
     useEffect(() => {
         if(user){
             const {name, mobileNo, address}:any = user
-            form.setFieldsValue({name, mobileNo, address})
+            form.setFieldsValue({name:name || '' , mobileNo: mobileNo || '', address: address || ''})
         }
     }, [])
 
@@ -35,18 +35,11 @@ const Collect = () => {
         await collect(payload).unwrap().then(res => {
             // console.log(res)
             if(res.success){
-                message.open({
-                    type: 'success',
-                    content: res.message,
-                    
-                })
+                message.success(res.message || 'Request sent successfully')
             }
         }).catch(err => {
             console.log(err)
-            message.open({
-                type: 'error',
-                content: "Something went wrong",
-            })
+            message.error(err.message || 'Something went wrong')
                 
         })
     }
