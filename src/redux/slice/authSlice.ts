@@ -1,6 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { authConfig } from "../service/authApi";
 import { message } from "antd";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
+import { stat } from "fs";
+
+interface initialStateType {
+    token: string,
+    user: object,
+    isAuthenticate: boolean,
+    logIn: boolean
+}
 
 const initialState = {
     token: '',
@@ -14,10 +24,11 @@ const authSlice = createSlice({
     initialState : initialState,
     reducers: {
         setCredentials: (state, action) => {
-            state.user = {},
-            state.token = '',
-            state.isAuthenticate = false,
-            state.logIn = false
+            // console.log(state, action);
+            state.user = action.payload.user,
+            state.token = action.payload.token,
+            state.isAuthenticate = action.payload.isAuthenticate,
+            state.logIn = action.payload.logIn
         }
     },
     extraReducers: (builder) => {
@@ -72,5 +83,13 @@ const authSlice = createSlice({
 export const {setCredentials} = authSlice.actions
 
 export default authSlice.reducer
+
+export const useAuth = () => {
+    const user = useSelector((state: RootState) => state.auth.user)
+    const token = useSelector((state: RootState) => state.auth.token)
+    const auth = useSelector((state: RootState) => state.auth)
+    return {user, token, auth}
+}
+
 
 // how to see status code in redux toolkit

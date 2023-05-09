@@ -8,6 +8,7 @@ import {createBrowserRouter, RouteObject} from 'react-router-dom'
 import { account, auth } from './router/path'
 import AuthLoader from './components/AuthLoader'
 import 'react-toastify/dist/ReactToastify.css';
+import notify from './notify'
 
 const custom = {
   token: {
@@ -18,10 +19,11 @@ const custom = {
 export default function App() {
 
     const {isLoading} = useReNewTokenQuery({})
+    notify()
 
     const login = useSelector((state:RootState) => state.auth.logIn)
 
-    console.log(login)
+    // console.log(login)
     
   return (
     <ConfigProvider theme={custom}>

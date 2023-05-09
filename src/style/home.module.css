@@ -54,6 +54,11 @@
     align-items: center;
 }
 
+.desktop-right-icons{
+    display: flex;
+    flex-direction: row;
+}
+
 .mini-card {
     width: auto;
     position: relative;

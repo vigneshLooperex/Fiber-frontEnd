@@ -1,19 +1,23 @@
 import { nav } from '@/global/data'
-import { Anchor, Drawer } from 'antd'
-import { LogoutOutlined, MenuOutlined, UserOutlined } from '@ant-design/icons';
-import React, { useEffect, useState } from 'react'
+import { Anchor, Badge, Drawer } from 'antd'
+import { BellOutlined, LogoutOutlined, MenuOutlined, UserOutlined } from '@ant-design/icons';
+import React, { useState } from 'react'
 import { Outlet, useLocation, useNavigate, useNavigation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setCredentials } from '@/redux/slice/authSlice';
+import { setCredentials, useAuth } from '@/redux/slice/authSlice';
+import notify from '@/notify';
 
 
 function Index() {
   const { pathname } = useLocation()
   const navigation = useNavigate()
   const dispatch = useDispatch()
-
+  const {user}:any = useAuth()
+  
+  
   const [menu, setMenu] = useState(false)
+
 
   const logOut = () => {
     console.log('Log out');
@@ -38,7 +42,8 @@ function Index() {
         <div className='disktop-menu'>
           {nav.map((item, i) => <Link key={i} to={item.href} className={pathname === item.href ? 'nav-links nav-active' : 'nav-links'} ><item.icon />{item.title}</Link>)}
         </div>
-        <div>
+        <div className='desktop-right-icons'>
+          <Link to="" onClick={() => console.log('notify')} className='nav-links'><Badge dot={user?.notify}><BellOutlined  style={{fontSize: 22}}/></Badge>Notification</Link>
           <Link to="" onClick={() => logOut()} className='nav-links'><LogoutOutlined style={{fontSize: 22}}/> LogOut</Link>
         </div>
 
