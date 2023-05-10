@@ -18,7 +18,8 @@ export const userConfig = api.injectEndpoints({
                 url: '/user/collection-request',
                 method: 'POST',
                 body: payload,
-            })
+            }),
+            invalidatesTags: ['User']
         }),
         getPlans: builder.query({
             query: () => '/plans'
@@ -36,8 +37,23 @@ export const userConfig = api.injectEndpoints({
         getPaymets: builder.query({
             query:  (page=1) => `/user/payments?sortby=createdAt:-1&populate=bill_id plan_id&page=${page}`
         }),
-       
+        muteNotification: builder.mutation({
+            query: () => ({
+                url: '/user/mute-notification',
+                method: 'POST',
+            })
+        }),
+        clearNotification: builder.mutation({
+            query: () => ({
+                url: '/user/clear-notification',
+                method: 'POST',
+            })
+        }),
+        collectRequest: builder.query({
+            query: (page=1) => `/user/collection-request?page=${page}&sortby=createdAt:-1`,
+            providesTags: ['User']
+        }),
     })
 })
 
-export const {useGetHelpQuery, useSendReportMutation, useCollectMutation, useGetPlansQuery, useRechargeMutation, useGetBillQuery,useGetPaymetsQuery} = userConfig
+export const {useGetHelpQuery, useSendReportMutation, useCollectMutation, useGetPlansQuery, useRechargeMutation, useGetBillQuery,useGetPaymetsQuery, useMuteNotificationMutation, useClearNotificationMutation, useCollectRequestQuery} = userConfig

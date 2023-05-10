@@ -20,11 +20,11 @@ const notify = () => {
         })
         
         socket.on('connect', () => {
-            console.log(socket.id)
+            // console.log(socket.id)
         })
     
         socket.on('notification_data', (data) => {
-            // console.log('notification_data', data)
+            console.log('notification_data', data)
 
             dispatch(setCredentials({
                 ...auth,
