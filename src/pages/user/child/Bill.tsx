@@ -147,6 +147,7 @@ const Bill = () => {
             setPage(page);
           },
           total: data?.totalCount,
+          showSizeChanger: false,
         }}
         style={{ overflowX: "scroll" }}
       />
