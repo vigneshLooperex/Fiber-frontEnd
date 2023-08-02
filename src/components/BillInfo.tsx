@@ -21,7 +21,7 @@ const myArray = (payment?: paymentData): userDetailsList[] => [
   {
     title: "Date",
     value: payment?.createdAt
-      ? new Date(payment?.createdAt).toLocaleString()
+      ? new Date(payment?.createdAt).toLocaleString("en-AU")
       : "-",
     type: "date",
   },
