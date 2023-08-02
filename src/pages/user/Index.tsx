@@ -61,7 +61,11 @@ function Index() {
       }}
       itemLayout="horizontal"
       bordered
-      footer={<Link onClick={() => clear({})}>Clear all notifications</Link>}
+      footer={
+        <Link to={""} onClick={() => clear({})}>
+          Clear all notifications
+        </Link>
+      }
       dataSource={user?.notifications}
       renderItem={(item: any, index) => (
         <List.Item key={index}>
